@@ -598,11 +598,13 @@ The first component that we are going to implement is the PC. Which is a standal
 ## Register file Write
 ![image](https://github.com/user-attachments/assets/1fbb3a11-d9a4-46e3-92b0-5aa5ed554450)
 ![image](https://github.com/user-attachments/assets/efcb30cb-6ecc-467d-b62c-519adbdedb10)
+![image](https://github.com/user-attachments/assets/947ffa63-5755-4480-86ba-32b06aa9231b)
 
 ## Branches
 ![image](https://github.com/user-attachments/assets/93b65770-f162-40c5-913b-bb68bbfc1de8)
 ![image](https://github.com/user-attachments/assets/749ee73b-15a8-4846-adcf-c0152e6a151d)
 ![image](https://github.com/user-attachments/assets/b1fcbe8f-bebf-4e18-b80e-05db2e0551d3)
+![image](https://github.com/user-attachments/assets/89b9a956-04e4-4485-8802-fb5caa6f31ae)
 
 ## Testbench
 ![image](https://github.com/user-attachments/assets/71490bd9-8f24-45e6-b898-1a1ce584aa99)
@@ -640,6 +642,8 @@ But then the whole purpose and the effort we put to pipeline the cpu goes in vai
 ![image](https://github.com/user-attachments/assets/164dce5e-4e0a-4f2d-8110-bef0b5c3fc70)
 ![image](https://github.com/user-attachments/assets/bbf6679b-94bd-455d-a7b0-1dbd6dddf185)
 ![image](https://github.com/user-attachments/assets/63bf7568-f546-42df-be8e-eca9a04f56ba)
+![image](https://github.com/user-attachments/assets/011ae25b-fdf0-4896-bc34-d1de8cb629d9)
+
 ## Register Bypass
 
 ![image](https://github.com/user-attachments/assets/271e80d9-8ca9-4a1c-abfd-2cb81bfbac59)
@@ -690,6 +694,8 @@ Solution
 ![image](https://github.com/user-attachments/assets/21b9bb85-798b-4bd5-a808-d5764bd7fc37)
 
 ![image](https://github.com/user-attachments/assets/8552904d-8314-4294-a4eb-9a98fa2a54a5)
+![image](https://github.com/user-attachments/assets/19fdbb74-901d-440e-8339-d1e53b9715e1)
+
 ## Jumps
 
 ![image](https://github.com/user-attachments/assets/f4ad3b12-b53d-412b-abe3-03619b9bb4ae)
