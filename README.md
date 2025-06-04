@@ -32,7 +32,7 @@ The RV64IMFD will be able to do multiplication and division in floating point nu
 The highlighted area shows some keywords which refer to some registers. This is associated through the ABI the Application Binary Interface.
 We will also look into the concept of stack pointer and memory allocation.
 
-## LAB 1
+## LAB - C program
 We will write a integer based C program,
 ![image](https://github.com/user-attachments/assets/5078db89-16ea-4d12-9226-4f4f8acce12d)
 We will execute it and see the output.
@@ -86,6 +86,7 @@ As you can see now we are able to see the chnge in contents of a0
 ![image](https://github.com/user-attachments/assets/91db8150-8e45-46d9-95ef-9358662e8e4c)
 The above image explains the working of addi
 
+## unsigned numbers
 Lets look about the representation 64 bit integers both signed and unsigned 
 Human are comfortable with decimal while machines can only understand binary.
 
@@ -109,7 +110,7 @@ Multiply the bit 2^position and add all the results to get the decimal equivalen
 ![image](https://github.com/user-attachments/assets/5ce24ef9-efbc-4c23-b9bf-3873bbd54330)
 Then maximum unsigned number that can be represented is all ones.
 
-Signed numbers
+## Signed numbers
 To represent the negative number we use 2s complement.
 ![image](https://github.com/user-attachments/assets/8c665e82-8c7c-4822-aef6-9b96422c548e)
 To get the 2’s complement of a number:
@@ -144,7 +145,7 @@ The application can access the register via register.
 
 In a RISC-V we have 32 registers. And the width is given by the keyword xlen which is defined by the architecture we use 32 for rv32 and 62 for rv64. For this repo we will assume xlen is always equal to 64.
 
-But why 32 register?? 
+## why 32 register?? 
 For any operations to happen we need to load the data into the register. This can be done in two ways,
 •	Directly writing into the register.
 •	The data can be loaded from the memory.
@@ -154,12 +155,12 @@ Risc-V belongs to little-endian memory system in which the LSB is store in the l
 
 Lets name the array as M it has three double words then the addressing will look something like this,
 ![image](https://github.com/user-attachments/assets/b33c8c3d-3d2c-4d8d-9681-e43bbbfc1cc7)
-Now lets look about the load instruction
+## load instruction
 
 ![image](https://github.com/user-attachments/assets/b12541bf-d944-4a7c-a169-f752c4072da2)
 
 
-The syntax is 
+## The syntax
 LD <register_to_load_data> <offset_to_address>(<register _which_contains_the_memeory_address>)
 The syntax for binary instruction will lok something like this,
 
@@ -212,7 +213,7 @@ The above image tell about the name and the functionality of each register.
 ![image](https://github.com/user-attachments/assets/088f2f71-d8c0-4571-9817-1f693595fcb2)
 As you can see in the above code how the ABI is used in the code.
 
-Write C program using ASM language.
+## Write C program using ASM language.
 Algorithm:
 ![image](https://github.com/user-attachments/assets/be47be64-f7d0-49eb-9684-664b781ed273)
 Here a2-7 are function arguments and a0 and a1 are return arguments.
@@ -341,6 +342,7 @@ The hardware-level mux is equivalent to a chained if
 statement or assign operator in the software stack
 ![image](https://github.com/user-attachments/assets/99f2757a-f482-49d9-9eb7-b236db306c28)
 
+## Makerchip IDE
 Makerchip IDE is a free, web-based platform for designing and simulating digital circuits using TL-Verilog (Transaction-Level Verilog). TL-Verilog is an extension of traditional Verilog that introduces higher levels of abstraction, making it easier to manage complex designs, pipelines, and control logic. Makerchip allows real-time editing, simulation, waveform viewing, and integration with open-source tools like Verilator. It is widely used in open-source hardware communities to prototype and verify RTL designs more efficiently. 
 
 ![image](https://github.com/user-attachments/assets/eff1b993-1e38-48dd-b609-b4af1736a770)
@@ -354,7 +356,7 @@ Lets implement the following circuit in TL Verilog now,
 ![image](https://github.com/user-attachments/assets/cc94c964-c01b-4f52-9ef8-23e292c262fa)
 Which when builded comes up like this,
 ![image](https://github.com/user-attachments/assets/316eb494-65af-4950-b0fd-614bdba5f388)
-Lets move on to sequential logic,
+## sequential logic,
 Sequential circuits are a fundamental class of digital circuits in which the output not only depends on the current inputs but also on the past history of inputs. This memory characteristic distinguishes them from combinational circuits. Sequential circuits are essential for implementing storage elements, finite state machines, and timing-dependent logic in digital systems. These circuits use clock signals to control the timing of state changes, making them suitable for synchronizing operations in complex digital systems.
 
 One of the most basic and widely used memory elements in sequential circuits is the D flip-flop (Data or Delay flip-flop). A D flip-flop captures the value of the input data (D) at the moment of the rising (or falling) edge of a clock signal and holds that value until the next clock edge. It has two stable states and one input (D), one clock input, and typically two outputs (Q and Q'). The D flip-flop is essential for data storage, synchronization, and edge-triggered event detection in digital design.
@@ -371,13 +373,13 @@ Set and Reset:
 •	If both Set and Reset are activated simultaneously, the output becomes invalid or undefined in most designs.
 Usually,
 ![image](https://github.com/user-attachments/assets/85c29b02-8eee-41f8-9076-fc8c3266b475)
+## Fibonacci series
 For example the following circuit shows the generation of Fibonacci series.
 ![image](https://github.com/user-attachments/assets/bae2716b-6277-45bd-aff7-24995b7b0008)
 In the makerchip ide it comes out like this
 ![image](https://github.com/user-attachments/assets/08e4b58b-e1e4-4452-8066-caedc24e625e)
-Lets build a counter:
+## counter
 The circuit is,
-
 ![image](https://github.com/user-attachments/assets/7bf6bb71-ad81-4717-a30b-ca3a5410325f)
 And the implementation looks like this,
 ![image](https://github.com/user-attachments/assets/691b522c-9780-4782-b00b-99b15edf6305)
@@ -387,19 +389,19 @@ Firstly  ‘0 means all zeros ‘X means all Don’t cares. The syntax is
 <Bit-Width> ‘ <base- ‘H’or ‘D’ or ‘O’ or ‘B’> <value>
 And the simulator use only 2 state variables for simulation.
 And the synthesizer and simulation tools truncate or extend when widths are mismatched without raising any warnings.
-Lab question :
+## Sequential Calculator 
 ![image](https://github.com/user-attachments/assets/643ef368-4eeb-4e4a-ac5e-94e2c418c52a)
 
 And the circuit comes out like this,
 
 ![image](https://github.com/user-attachments/assets/06443465-827f-46d7-a9fc-69ee7a390b8d)
-Pipelining
+## Pipelining
 Pipelining is a technique used in computer architecture to improve the performance of a processor by executing multiple instructions simultaneously in different stages of execution. Instead of completing one instruction before starting the next, pipelining divides instruction execution into several stages (such as fetch, decode, execute, memory access, and write-back), allowing different instructions to occupy different stages at the same time. This overlapping of operations increases instruction throughput and makes more efficient use of hardware resources. Pipelining is widely used in modern CPUs and microcontrollers to speed up processing and enhance system performance without significantly increasing clock speed.
 ![image](https://github.com/user-attachments/assets/056db727-35aa-49a7-8a68-c973a4190a27)
 The above image describes an example of pipelining. It explains the process of calculating the hypotenuse of a right-angle triangle using the Pythagoras theorem. The process involves squaring the inputs, adding them, and taking the square root of the answer. Instead of doing the entire process step by step for each input separately, it takes 3 clock cycles to complete the operation for every input.
 
 So instead of that, the different stages of the operation are isolated. When the first input reaches the second stage, the first stage is fed with the next input. As the input propagates to the next stage, the previous stage will be fed with the next input. In this way, though the first output takes 3 cycles, the subsequent outputs will come in consecutive cycles, hence increasing the efficiency of the processing.
-
+## Advantages of TL Verilog
 The below image shows how TL Verilog has simplified the system Verilog in terms code abstraction
 ![image](https://github.com/user-attachments/assets/2b37041a-55a1-4b20-817a-e82943397cb3)
 Code reduction is one of  the most key and interesting features of TL Verilog.
@@ -425,23 +427,23 @@ CamelCase is used for state signals
 UPPER_CASE is used for keyword signal.
 Numbers cannot be used at the end of the token/identifiers
 
-Lab exercise. Pipelined Fibonacci series
+## Pipelined Fibonacci series
 
 
 ![image](https://github.com/user-attachments/assets/a0ab29f3-04b7-4164-be58-2dd0ca409d48)
 The circuit is inherently pipelined circuits.
-Lab Challenge :
+## Lab pipeline :
 
 ![image](https://github.com/user-attachments/assets/8e063d93-e56c-4da2-81fd-3bb00105d3b2)
 ![image](https://github.com/user-attachments/assets/2f731530-b42c-4a7c-8d02-f2b28c4e6dee)
 
-Lab challenge : 
+## Lab counter and calculator : 
 
 ![image](https://github.com/user-attachments/assets/177725b7-952f-4e33-937b-c53a82a96f3c)
 Solution:
 ![image](https://github.com/user-attachments/assets/29ad4fa6-9a14-4262-bed0-e405c0df07b6)
 
-Lab2 challenge:
+## Lab cycle calculator:
 ![image](https://github.com/user-attachments/assets/5d0fc0ac-9c8b-4e81-91a6-4c69fd92f012)
 And the solution is,
 ![image](https://github.com/user-attachments/assets/941f9ecd-f545-4f3c-96c3-59046ff7d379)
@@ -513,23 +515,25 @@ This is a macro call to show visual output (like waveforms or diagrams). It’s 
 
 Switches back to SystemVerilog and ends the module.
 
-## Lab challenge :
+## Distance accumulator :
 ![image](https://github.com/user-attachments/assets/6bc579e7-6f47-4660-be1d-d32a4b720058)
 Solution:
 ![image](https://github.com/user-attachments/assets/ec723e9a-d1ba-409f-94ac-d6d14ac76da9)
 ![image](https://github.com/user-attachments/assets/dc45d8f5-f296-4446-b0e5-9b6508634e41)
-Lab challenge
+
+## cycle calcualtor with validdity
 ![image](https://github.com/user-attachments/assets/63ef9d8f-585f-4389-986b-8b0d367c0296)
 ![image](https://github.com/user-attachments/assets/c5892c49-bae3-48d7-8631-1bf3a42d1bb0)
+## calcualtor with single value memory
 ![image](https://github.com/user-attachments/assets/34f14384-397e-49d4-a4e6-662728d4a4d8)
 ![image](https://github.com/user-attachments/assets/6eb9df1a-de7f-405a-9798-abed1abe596f)
 Lexical Reentrance is one of the core and unique features of TL-Verilog (Transaction-Level Verilog) that makes it much more powerful and flexible than traditional HDLs like SystemVerilog or Verilog.
 ________________________________________
-What is Lexical Reentrance?
+## What is Lexical Reentrance?
 Lexical reentrance allows re-entry into a previously declared scope or pipeline stage in the code multiple times. That means you can define some logic inside a stage (e.g., @1), move on to another part of the design, and then later go back and add more logic to the same stage.
 This is not allowed in traditional HDLs, where scopes must be strictly nested and closed before moving on.
 ________________________________________
-Why is this powerful?
+## Why is this powerful?
 In TL-Verilog:
 •	You can build a modular, composable, and hierarchical design.
 •	You can develop and refine pipeline stages incrementally.
@@ -540,7 +544,7 @@ Example :
 And in the above example xx[*] means all the bits of xx.
 Hierarchy Tutorial
 ![image](https://github.com/user-attachments/assets/14278531-f86d-49d2-ab7a-5444a5d8cf4e)
-A simple RISC-V architecture,
+## A simple RISC-V architecture,
 ![image](https://github.com/user-attachments/assets/8934e88a-6996-47be-b978-f543840269f4)
 PC – program counter is pointer that points to the next instruction to be executed.
 It increments on it own.
@@ -559,17 +563,17 @@ the code contains,
 ● An instruction memory containing the sum 1..9 test program.
 ● Commented code for register file and memory.
 ● Visualization.
-IMPLEMENTATION OF PC
+## IMPLEMENTATION OF PC
 The first component that we are going to implement is the PC. Which is a standalone component which increases by one unit every cycle the implementation is as follows,
 ![image](https://github.com/user-attachments/assets/869e6f3e-4d19-4477-b8c2-f2b2e73029ca)
  
 
-IMPLEMENTATION OF INSTRUCTION MEMORY,
+## IMPLEMENTATION OF INSTRUCTION MEMORY,
 
 ![image](https://github.com/user-attachments/assets/ddcd70ac-1846-4eeb-9376-3659d9c70bc0)
-Connecting instruction memory interfaces:
+## Connecting instruction memory interfaces:
 ![image](https://github.com/user-attachments/assets/08f6e2bb-4d38-48f6-a9b1-6433f78c652f)
-Decode:
+## Decode:
 ![image](https://github.com/user-attachments/assets/86eaee65-a4f9-4085-8e45-8ddd1f00e5ea)
 ![image](https://github.com/user-attachments/assets/066d8b2a-f4ab-4481-bcc0-be2c7f15e937)
 ![image](https://github.com/user-attachments/assets/8c3b7dfd-d8f2-4ab2-898e-295a04edc998)
@@ -581,48 +585,48 @@ Decode:
 ![image](https://github.com/user-attachments/assets/53c87872-743d-42c5-8264-889dc71d0d9e)
 ![image](https://github.com/user-attachments/assets/b8f5fa78-b702-4cf9-babf-154bcb59a40e)
 ![image](https://github.com/user-attachments/assets/c88021fd-68c0-4be8-8fc0-7c13d3abed55)
+## Register file read
 ![image](https://github.com/user-attachments/assets/2f73d47e-d7cf-4729-baca-0bee0e785bc1)
 ![image](https://github.com/user-attachments/assets/dcc1e3ae-ca61-4210-a0f2-c03de4c87054)
-Register file read
+
 ![image](https://github.com/user-attachments/assets/9805f64c-a6db-41ec-bae2-1e07fe987b61)
 ![image](https://github.com/user-attachments/assets/95d49d9b-a19f-4893-8375-3d5258e2f0e3)
-ALU
+## ALU
 ![image](https://github.com/user-attachments/assets/e8bc0a06-02ef-4d44-a4e6-6d859231dbd6)
 ![image](https://github.com/user-attachments/assets/9b95c7dd-79d1-4257-90ee-6396d90176e3)
 
-Register file read
-
+## Register file Write
 ![image](https://github.com/user-attachments/assets/1fbb3a11-d9a4-46e3-92b0-5aa5ed554450)
 ![image](https://github.com/user-attachments/assets/efcb30cb-6ecc-467d-b62c-519adbdedb10)
 
-Branches
+## Branches
 ![image](https://github.com/user-attachments/assets/93b65770-f162-40c5-913b-bb68bbfc1de8)
 ![image](https://github.com/user-attachments/assets/749ee73b-15a8-4846-adcf-c0152e6a151d)
 ![image](https://github.com/user-attachments/assets/b1fcbe8f-bebf-4e18-b80e-05db2e0551d3)
 
-Testbench
+## Testbench
 ![image](https://github.com/user-attachments/assets/71490bd9-8f24-45e6-b898-1a1ce584aa99)
-Final implemented cpu
+## Final implemented cpu
 
 ![image](https://github.com/user-attachments/assets/a1ec7c3f-306f-474e-99c8-745afc57c7ba)
 The log shows passed
 ![image](https://github.com/user-attachments/assets/40078a03-2fb9-4082-84bb-57acf6aa66c2)
-ARRAYS;
+## ARRAYS;
 ![image](https://github.com/user-attachments/assets/c414ab34-ac12-4acb-a394-7f4e891818c8)
 The working of arrays at the hardware level is described by the above image. Each layer will have a mux to select the value. The number of the layer matches with that particular mux then it read/write the corresponding index value and returns.
 
 
-Pipelining the cpu
+## Pipelining the cpu
 ![image](https://github.com/user-attachments/assets/74a80774-0409-48d2-8792-c69023c15620)
 Pipelining is a technique used in digital circuits, especially in processors, to improve instruction throughput (i.e., the number of instructions completed per unit time).
 
 It breaks down the execution of an instruction into several stages, and each stage performs a part of the instruction. While one instruction is in one stage, the next instruction can enter the previous stage, allowing multiple instructions to be in different stages simultaneously. This help in increasing the clock frequency and hence the overall speed of the system.
 
-Water fall logic
+## Water fall logic
 ![image](https://github.com/user-attachments/assets/aff029ae-a47b-423f-8d52-b5de4f6e4183)
 The above image describes the concept of water fall logic. Though there is just one PC and other hardware module are also just one. But this diagram describes how the hardware block sees itself. And how the values propagate across different pipeline like how water falls across different pipes.
 
-Hazards
+## Hazards
 ![image](https://github.com/user-attachments/assets/31dfa5af-2984-4c9f-b6e3-4e212e7dfb48)
 But wait what if the next instruction is depended on current instruction output that is where problem arises. This is called,Hazards
 For example,
@@ -632,11 +636,11 @@ If this happens then we need to discard or wait for few clock cycles like,
 ![image](https://github.com/user-attachments/assets/0ad5950b-1268-40b5-bbd7-67e210b8c256)
 But then the whole purpose and the effort we put to pipeline the cpu goes in vain. So lets us sort out first and simple solution is…
 
-Cycle $valid
+## Cycle $valid
 ![image](https://github.com/user-attachments/assets/164dce5e-4e0a-4f2d-8110-bef0b5c3fc70)
 ![image](https://github.com/user-attachments/assets/bbf6679b-94bd-455d-a7b0-1dbd6dddf185)
 ![image](https://github.com/user-attachments/assets/63bf7568-f546-42df-be8e-eca9a04f56ba)
-Register Bypass
+## Register Bypass
 
 ![image](https://github.com/user-attachments/assets/271e80d9-8ca9-4a1c-abfd-2cb81bfbac59)
 
@@ -650,7 +654,7 @@ Utilizes a multiplexer to select between the forwarded value and the value from 
 
 
 
-Branches  Hazard
+## Branches  Hazard
 
 ![image](https://github.com/user-attachments/assets/b08da75d-b28f-4b8c-b0d1-cf144faad88e)
 
@@ -665,7 +669,7 @@ Branches  Hazard
 •	Simulate the design using a model that closely achieves one instruction per cycle.
 •	Confirm the correctness of the bypass and branch-handling mechanisms through validation.
 
-Completing the CPU
+## Completing the CPU
 
 ![image](https://github.com/user-attachments/assets/77eb3cb7-5cc1-4052-a38a-2fcb60612f03)
 
@@ -674,7 +678,7 @@ Completing the CPU
 ![image](https://github.com/user-attachments/assets/a2cb862e-6a20-4b94-ab57-c80f6fa1f7fe)
 
 ![image](https://github.com/user-attachments/assets/732869da-546c-4af3-a144-7eeacf82b365)
-Load hazards
+## Load hazards
 
 ![image](https://github.com/user-attachments/assets/60e209d8-903d-41ec-b4fc-01647fd5a0f9)
 Solution 
@@ -686,13 +690,13 @@ Solution
 ![image](https://github.com/user-attachments/assets/21b9bb85-798b-4bd5-a808-d5764bd7fc37)
 
 ![image](https://github.com/user-attachments/assets/8552904d-8314-4294-a4eb-9a98fa2a54a5)
-Jumps
+## Jumps
 
 ![image](https://github.com/user-attachments/assets/f4ad3b12-b53d-412b-abe3-03619b9bb4ae)
 
 ![image](https://github.com/user-attachments/assets/528a2566-a3ac-4f52-916f-919b834d8cec)
 
-final implemted design
+## final implemted design
 
 ![image](https://github.com/user-attachments/assets/25267e32-4e3f-4736-a875-a5c5e9c480cf)
 
