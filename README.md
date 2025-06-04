@@ -1,6 +1,62 @@
 # RISC-V-MYTH-Workshop
 ## Introduction
+This repository documents my complete learning journey through the RISC-V based *Microprocessor for You in Thirty Hours* (MYTH) Workshop conducted by VSD and Steve Hoover. The workshop offers a hands-on experience in designing, building, and simulating a RISC-V processor using C, Assembly, Verilog, and TL-Verilog.
 
+Throughout this course, I explored the entire software-to-hardware stack, starting from compiling C code into RISC-V assembly, debugging using the `spike` simulator, and writing system-level code that interacts with registers and memory using ABI conventions. The experience then transitions into digital design using TL-Verilog and culminates in building a pipelined RISC-V CPU core, simulating it with `Makerchip`, and understanding performance optimization techniques like register bypassing, hazard mitigation, and pipelining.
+
+### Key Concepts Covered:
+- Basics of the RISC-V ISA and ABI
+- Compilation and debugging of C programs for RISC-V
+- Register-level manipulation and memory interaction
+- Writing assembly routines and interfacing them with C
+- Sequential and combinational logic design in TL-Verilog
+- CPU pipeline stages and hazards
+- Building and testing a fully functional RISC-V CPU core
+
+> This repository serves as a complete reference for anyone wishing to explore processor design from both software and hardware perspectives using open-source tools.
+
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [RISC-V Instruction Set Architecture (ISA)](#risc-v-instruction-set-architecture-isa)
+- [Software to hardware](#software-to-hardware)
+- [Integer based calculator](#integer-based-calculator)
+- [LAB - C program](#lab---c-program)
+- [Unsigned numbers](#unsigned-numbers)
+- [Signed numbers](#signed-numbers)
+- [Introduction to ABI - Application Binary Interface](#introduction-to-abi---application-binary-interface)
+- [Write C program using ASM language](#write-c-program-using-asm-language)
+- [Digital Logic using TL Verilog](#digital-logic-using-tl-verilog)
+- [Implementation of PC](#implementation-of-pc)
+- [Implementation of Instruction Memory](#implementation-of-instruction-memory)
+- [Connecting instruction memory interfaces](#connecting-instruction-memory-interfaces)
+- [Decode](#decode)
+- [Register file read](#register-file-read)
+- [ALU](#alu)
+- [Register file Write](#register-file-write)
+- [Branches](#branches)
+- [Load hazards](#load-hazards)
+- [Jumps](#jumps)
+- [Final implemented design](#final-implemted-design)
+- [Distance accumulator](#distance-accumulator)
+- [Cycle calculator with validity](#cycle-calcualtor-with-validdity)
+- [Calculator with single value memory](#calcualtor-with-single-value-memory)
+- [What is Lexical Reentrance?](#what-is-lexical-reentrance)
+- [A simple RISC-V architecture](#a-simple-risc-v-architecture)
+- [Sequential Calculator](#sequential-calculator)
+- [Pipelining](#pipelining)
+- [Advantages of TL Verilog](#advantages-of-tl-verilog)
+- [Branch Hazards](#branches--hazard)
+- [Completing the CPU](#completing-the-cpu)
+- [Hazards](#hazards)
+- [Cycle $valid](#cycle-valid)
+- [Register Bypass](#register-bypass)
+- [Arrays](#arrays)
+- [Pipelining the CPU](#pipelining-the-cpu)
+- [Water fall logic](#water-fall-logic)
+- [Conclusion](#conclusion)
+- [References](#references)
 ## RISC-V Instruction Set Architecture (ISA)
 To communicate with the computer and make the it work in the way we want to work we write the instruction through programming languages such as C which is converted and compiled in assembly language program using RISC-V isa which is then converted into machine language and then into binary language which is understandable by the CPU. And additionally in order for the cpu to implement the Risc-V instruction it needs hardware which is modelled and created by the HDLs 
 
@@ -719,11 +775,25 @@ Solution
 
 ## conclusion
 
+This repository documents a complete learning path through the RISC-V MYTH Workshop, covering both software and hardware aspects of RISC-V systems. Starting from understanding RISC-V ISA, ABI, and system-level instructions, we transitioned through the compilation of C programs, assembly-level debugging, and finally implemented a functioning RISC-V CPU core in TL-Verilog.
+
+Key highlights:
+- Clear understanding of how C code maps to RISC-V assembly and machine code.
+- Use of tools like `spike`, `makerchip`, and `picorv32` to simulate and visualize execution.
+- In-depth exploration of load/store, branch, arithmetic, and pipeline hazards.
+- Hands-on with pipelining, hazard mitigation, and valid signal propagation.
+- Designed logic gates, counters, Fibonacci calculators, and eventually built a pipelined CPU core using TL-Verilog.
+
+This journey demonstrates how open-source tools, modular design principles, and educational platforms like the MYTH Workshop can empower students and professionals alike to deeply understand processor design. The knowledge gained here sets the foundation for more advanced projects in VLSI, computer architecture, and embedded systems.
+
+> Special thanks to VSD, Steve Hoover, and the open-source hardware community for making this learning experience accessible and practical.
+
 ## References
+https://www.vlsisystemdesign.com/riscv-based-myth/
 
-
-
-
+## important links
+https://makerchip.com/
+https://drive.google.com/file/d/1tqvXmFru31-tezDX30jTNJoLcQk308UM/view
 
 
 
