@@ -514,17 +514,196 @@ This is a macro call to show visual output (like waveforms or diagrams). It’s 
 Switches back to SystemVerilog and ends the module.
 
 ## Lab challenge :
+![image](https://github.com/user-attachments/assets/6bc579e7-6f47-4660-be1d-d32a4b720058)
+Solution:
+![image](https://github.com/user-attachments/assets/ec723e9a-d1ba-409f-94ac-d6d14ac76da9)
+![image](https://github.com/user-attachments/assets/dc45d8f5-f296-4446-b0e5-9b6508634e41)
+Lab challenge
+![image](https://github.com/user-attachments/assets/63ef9d8f-585f-4389-986b-8b0d367c0296)
+![image](https://github.com/user-attachments/assets/c5892c49-bae3-48d7-8631-1bf3a42d1bb0)
+![image](https://github.com/user-attachments/assets/34f14384-397e-49d4-a4e6-662728d4a4d8)
+![image](https://github.com/user-attachments/assets/6eb9df1a-de7f-405a-9798-abed1abe596f)
+Lexical Reentrance is one of the core and unique features of TL-Verilog (Transaction-Level Verilog) that makes it much more powerful and flexible than traditional HDLs like SystemVerilog or Verilog.
+________________________________________
+What is Lexical Reentrance?
+Lexical reentrance allows re-entry into a previously declared scope or pipeline stage in the code multiple times. That means you can define some logic inside a stage (e.g., @1), move on to another part of the design, and then later go back and add more logic to the same stage.
+This is not allowed in traditional HDLs, where scopes must be strictly nested and closed before moving on.
+________________________________________
+Why is this powerful?
+In TL-Verilog:
+•	You can build a modular, composable, and hierarchical design.
+•	You can develop and refine pipeline stages incrementally.
+•	Different blocks or modules can collaboratively contribute to the same stage.
+•	This leads to cleaner separation of concerns: logic can be written close to the data flow and timing without needing complex rewrites.
+Example : 
+![image](https://github.com/user-attachments/assets/a6fc268a-29f0-40ce-94bf-38f6ed0f6234)
+And in the above example xx[*] means all the bits of xx.
+Hierarchy Tutorial
+![image](https://github.com/user-attachments/assets/14278531-f86d-49d2-ab7a-5444a5d8cf4e)
+A simple RISC-V architecture,
+![image](https://github.com/user-attachments/assets/8934e88a-6996-47be-b978-f543840269f4)
+PC – program counter is pointer that points to the next instruction to be executed.
+It increments on it own.
+This is send to the instruction to the memory, which sends back the instruction to the decode block.
+It is going to decode & interpret the instruction. Like parameter of rs,rd,offset etc… it might also interpret a branch instruction with an offset which might move the PC. That’s why decoder also has a control over PC’s increment through the adder.
+Most of the instruction are arithmetic instruction. For which we look up into register file. Mostly we need to read two register. These values are fed into the ALU unit. These then perform operation and written back to memory. And most of the time the data will also be stored into the memory. This is done by the Dmem Rd/Wr unit.
+Ok lets start building the CPU core,
+
+The implementation plan is as follows,
+![image](https://github.com/user-attachments/assets/8045a772-e1c4-4534-b8d6-0db2c760aab8)
+The starting point of the design with commented instantiation of Imem and register files and data memory are at,
+https://github.com/stevehoover/RISC-V_MYTH_Workshop
+
+the code contains,
+* A simple RISC-V assembler.
+● An instruction memory containing the sum 1..9 test program.
+● Commented code for register file and memory.
+● Visualization.
+IMPLEMENTATION OF PC
+The first component that we are going to implement is the PC. Which is a standalone component which increases by one unit every cycle the implementation is as follows,
+![image](https://github.com/user-attachments/assets/869e6f3e-4d19-4477-b8c2-f2b2e73029ca)
+ 
+
+IMPLEMENTATION OF INSTRUCTION MEMORY,
+
+![image](https://github.com/user-attachments/assets/ddcd70ac-1846-4eeb-9376-3659d9c70bc0)
+Connecting instruction memory interfaces:
+![image](https://github.com/user-attachments/assets/08f6e2bb-4d38-48f6-a9b1-6433f78c652f)
+Decode:
+![image](https://github.com/user-attachments/assets/86eaee65-a4f9-4085-8e45-8ddd1f00e5ea)
+![image](https://github.com/user-attachments/assets/066d8b2a-f4ab-4481-bcc0-be2c7f15e937)
+![image](https://github.com/user-attachments/assets/8c3b7dfd-d8f2-4ab2-898e-295a04edc998)
+![image](https://github.com/user-attachments/assets/94f716f6-23cb-4caf-8eb8-d79d986a2d87)
+![image](https://github.com/user-attachments/assets/ffa0475f-bc17-4940-a4cd-4ecf621638f4)
+![image](https://github.com/user-attachments/assets/84af6883-9571-4b52-9dd1-e986e5b90f8f)
+![image](https://github.com/user-attachments/assets/e2b89d3c-d276-41e0-988c-587db805c746)
+![image](https://github.com/user-attachments/assets/3705fdc1-c257-4f19-a838-fa5a68ae0fac)
+![image](https://github.com/user-attachments/assets/53c87872-743d-42c5-8264-889dc71d0d9e)
+![image](https://github.com/user-attachments/assets/b8f5fa78-b702-4cf9-babf-154bcb59a40e)
+![image](https://github.com/user-attachments/assets/c88021fd-68c0-4be8-8fc0-7c13d3abed55)
+![image](https://github.com/user-attachments/assets/2f73d47e-d7cf-4729-baca-0bee0e785bc1)
+![image](https://github.com/user-attachments/assets/dcc1e3ae-ca61-4210-a0f2-c03de4c87054)
+Register file read
+![image](https://github.com/user-attachments/assets/9805f64c-a6db-41ec-bae2-1e07fe987b61)
+![image](https://github.com/user-attachments/assets/95d49d9b-a19f-4893-8375-3d5258e2f0e3)
+ALU
+![image](https://github.com/user-attachments/assets/e8bc0a06-02ef-4d44-a4e6-6d859231dbd6)
+![image](https://github.com/user-attachments/assets/9b95c7dd-79d1-4257-90ee-6396d90176e3)
+
+Register file read
+
+![image](https://github.com/user-attachments/assets/1fbb3a11-d9a4-46e3-92b0-5aa5ed554450)
+![image](https://github.com/user-attachments/assets/efcb30cb-6ecc-467d-b62c-519adbdedb10)
+
+Branches
+![image](https://github.com/user-attachments/assets/93b65770-f162-40c5-913b-bb68bbfc1de8)
+![image](https://github.com/user-attachments/assets/749ee73b-15a8-4846-adcf-c0152e6a151d)
+![image](https://github.com/user-attachments/assets/b1fcbe8f-bebf-4e18-b80e-05db2e0551d3)
+
+Testbench
+![image](https://github.com/user-attachments/assets/71490bd9-8f24-45e6-b898-1a1ce584aa99)
+Final implemented cpu
+
+![image](https://github.com/user-attachments/assets/a1ec7c3f-306f-474e-99c8-745afc57c7ba)
+The log shows passed
+![image](https://github.com/user-attachments/assets/40078a03-2fb9-4082-84bb-57acf6aa66c2)
+ARRAYS;
+![image](https://github.com/user-attachments/assets/c414ab34-ac12-4acb-a394-7f4e891818c8)
+The working of arrays at the hardware level is described by the above image. Each layer will have a mux to select the value. The number of the layer matches with that particular mux then it read/write the corresponding index value and returns.
+
+
+Pipelining the cpu
+![image](https://github.com/user-attachments/assets/74a80774-0409-48d2-8792-c69023c15620)
+Pipelining is a technique used in digital circuits, especially in processors, to improve instruction throughput (i.e., the number of instructions completed per unit time).
+
+It breaks down the execution of an instruction into several stages, and each stage performs a part of the instruction. While one instruction is in one stage, the next instruction can enter the previous stage, allowing multiple instructions to be in different stages simultaneously. This help in increasing the clock frequency and hence the overall speed of the system.
+
+Water fall logic
+![image](https://github.com/user-attachments/assets/aff029ae-a47b-423f-8d52-b5de4f6e4183)
+The above image describes the concept of water fall logic. Though there is just one PC and other hardware module are also just one. But this diagram describes how the hardware block sees itself. And how the values propagate across different pipeline like how water falls across different pipes.
+
+Hazards
+![image](https://github.com/user-attachments/assets/31dfa5af-2984-4c9f-b6e3-4e212e7dfb48)
+But wait what if the next instruction is depended on current instruction output that is where problem arises. This is called,Hazards
+For example,
+![image](https://github.com/user-attachments/assets/77494cdd-9808-4bbd-addf-e7e7d221ee09)
+If this happens then we need to discard or wait for few clock cycles like,
+
+![image](https://github.com/user-attachments/assets/0ad5950b-1268-40b5-bbd7-67e210b8c256)
+But then the whole purpose and the effort we put to pipeline the cpu goes in vain. So lets us sort out first and simple solution is…
+
+Cycle $valid
+![image](https://github.com/user-attachments/assets/164dce5e-4e0a-4f2d-8110-bef0b5c3fc70)
+![image](https://github.com/user-attachments/assets/bbf6679b-94bd-455d-a7b0-1dbd6dddf185)
+![image](https://github.com/user-attachments/assets/63bf7568-f546-42df-be8e-eca9a04f56ba)
+Register Bypass
+
+![image](https://github.com/user-attachments/assets/271e80d9-8ca9-4a1c-abfd-2cb81bfbac59)
+
+![image](https://github.com/user-attachments/assets/e9111f2b-c0c1-4c17-aeff-70ec071ab8f0)
+
+![image](https://github.com/user-attachments/assets/8d9663b8-17dd-4cdf-9d52-d35940ca392e)
+Establishes a bypass (or forwarding) path from the ALU output of the previous instruction directly to the input of the current instruction.
+
+Enables the immediate use of computation results without needing to wait for them to be written to and read back from the register file.
+Utilizes a multiplexer to select between the forwarded value and the value from the register file.
 
 
 
+Branches  Hazard
+
+![image](https://github.com/user-attachments/assets/b08da75d-b28f-4b8c-b0d1-cf144faad88e)
+
+![image](https://github.com/user-attachments/assets/135068ed-f0aa-4405-900a-cf25d5006d4c)
+
+![image](https://github.com/user-attachments/assets/828cc3a2-c835-4a18-b49a-7f3bd421daaa)
+•	When a branch is taken, the CPU must correctly redirect the program counter (PC) and invalidate any instructions that were speculatively fetched.
+•	Due to the three-cycle delay required to decode the instruction, read the operands, and compute the target address, a two-cycle branch penalty is unavoidable.
+•	The PC redirection path inherently forms a three-cycle loop.
+•	The valid signal logic is modified to ensure that instructions are marked valid only if previous branches are not taken.
+•	For normal sequential execution, the PC update follows a one-cycle loop, while for branch redirection, the three-cycle loop remains.
+•	Simulate the design using a model that closely achieves one instruction per cycle.
+•	Confirm the correctness of the bypass and branch-handling mechanisms through validation.
+
+Completing the CPU
+
+![image](https://github.com/user-attachments/assets/77eb3cb7-5cc1-4052-a38a-2fcb60612f03)
+
+![image](https://github.com/user-attachments/assets/1f230fa6-dca7-446a-9c4e-69efab9f89cd)
+
+![image](https://github.com/user-attachments/assets/a2cb862e-6a20-4b94-ab57-c80f6fa1f7fe)
+
+![image](https://github.com/user-attachments/assets/732869da-546c-4af3-a144-7eeacf82b365)
+Load hazards
+
+![image](https://github.com/user-attachments/assets/60e209d8-903d-41ec-b4fc-01647fd5a0f9)
+Solution 
+
+![image](https://github.com/user-attachments/assets/3c422597-1330-4d42-83bb-d37a79541a6a)
+
+![image](https://github.com/user-attachments/assets/6d02d718-20e8-43a2-a6fa-0e34a2f1313f)
+
+![image](https://github.com/user-attachments/assets/21b9bb85-798b-4bd5-a808-d5764bd7fc37)
+
+![image](https://github.com/user-attachments/assets/8552904d-8314-4294-a4eb-9a98fa2a54a5)
+Jumps
+
+![image](https://github.com/user-attachments/assets/f4ad3b12-b53d-412b-abe3-03619b9bb4ae)
+
+![image](https://github.com/user-attachments/assets/528a2566-a3ac-4f52-916f-919b834d8cec)
+
+final implemted design
+
+![image](https://github.com/user-attachments/assets/25267e32-4e3f-4736-a875-a5c5e9c480cf)
 
 
+![image](https://github.com/user-attachments/assets/c97dda25-fe3a-486a-b09f-c7efa048a0af)
 
 
+![image](https://github.com/user-attachments/assets/27472945-7a11-45b9-a105-54961d0b0994)
 
 
-
-
+![image](https://github.com/user-attachments/assets/7f331f13-cdae-43aa-a9b0-ebf0f727bdd7)
 
 
 
